@@ -154,8 +154,9 @@
     }
     
     #modal-card {
-      width: 150px;
-      height: 225px;
+      width: 225px;
+      height: 338px;
+        transform: scale(1.2);
     }
     .card.selected {
         position: relative;
