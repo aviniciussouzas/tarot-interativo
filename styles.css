@@ -1,0 +1,186 @@
+:root {
+    --gold: #4e4510;
+    --parchment: #fff5e6;
+    --ink: #2c2c2c;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f5e6d3;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  #controls {
+    margin: 20px 0;
+  }
+  
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #6d4c41;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #8d6e63;
+  }
+  
+  #game-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .card {
+    width: 120px;
+    height: 180px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    cursor: pointer;
+    background-image: url('images/back-image.png');
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card.selected {
+    transform: scale(1.5);
+    z-index: 20;
+  }
+  
+  /* Modal */
+  #modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+  }
+  
+  #modal.show {
+    display: flex;
+  }
+  
+  .modal-content {
+    background: var(--parchment);
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    border: 3px solid var(--gold);
+    position: relative;
+  }
+  
+  #modal-card {
+    width: 300px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+  }
+  
+  .modal-text {
+    flex: 1;
+    text-align: left;
+    padding: 15px;
+    color: var(--ink);
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  #close-modal {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: var(--ink);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+  }
+  
+  .modal-text p {
+    margin: 10px 0;
+    border-left: 3px solid var(--gold);
+    padding-left: 10px;
+  }
+  
+  .ritual {
+    font-style: italic;
+    margin-top: 20px !important;
+    color: #5c4a34;
+  }
+  
+  @media (max-width: 768px) {
+    .modal-content {
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+    
+    #modal-card {
+      width: 150px;
+      height: 225px;
+    }
+    .card.selected {
+        position: relative;
+        overflow: hidden;
+      }
+      
+    .card.selected::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          rgba(255,215,0,0.1) 0%,
+          rgba(255,215,0,0.3) 50%,
+          rgba(255,215,0,0.1) 100%
+        );
+        animation: brilho 3s infinite;
+        transform: rotate(45deg);
+      }
+      
+      @keyframes brilho {
+        0% { transform: rotate(45deg) translateX(-100%); }
+        100% { transform: rotate(45deg) translateX(100%); }
+      }
+  }
