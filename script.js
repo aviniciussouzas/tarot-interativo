@@ -32,7 +32,7 @@ const cardsData = [
 { 
     id: 'A Ponte Invisível', 
     image: 'images/card6.png',
-    text: 'Reflexão interna: Qual travessia invisível você está sendo chamado a fazer neste momento?.',
+    text: 'Reflexão interna: Qual travessia invisível você está sendo chamado a fazer neste momento?',
     ritual: 'Faça algo hoje que pareça arriscado, mas essencial para sua jornada.'
 },
 {
